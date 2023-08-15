@@ -22,13 +22,21 @@ function display_div_id_scripts_styles() {
 add_shortcode( 'display_div_id', 'display_div_id_toggle' );
 function display_div_id_toggle( $args = array() ) {
     
+
+    if (isset($args['excludeselector'])) {
+        $excludeSelector = $args['excludeselector'];
+    } else {
+        $excludeSelector = '';
+    }
+    $excludeSelector = str_replace("'", "", $excludeSelector);
+    
     ob_start();
 
     ?>
     <div class="highlight-div-toggle-switch">
         <label class="switch">
             <input type="checkbox">
-            <span class="slider round" onclick="toggleDisplayDivIDs();"></span>
+            <span class="slider round" onclick="toggleDisplayDivIDs('<?php echo $excludeSelector; ?>');"></span>
         </label>
         <span>Click to toggle DIV IDs</span>
     </div>

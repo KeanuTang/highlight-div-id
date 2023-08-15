@@ -50,11 +50,11 @@ function clearOverlaps(classname) {
   });
 }
 
-function toggleDisplayDivIDs() {
+function toggleDisplayDivIDs(excludeSelector) {
   currentDisplayIDMode = !currentDisplayIDMode;
 
   if (currentDisplayIDMode) {
-    jQuery("div[id]").each(function(){
+    jQuery("div[id]").not(excludeSelector).each(function(){
       if(this.id !==''){
         var id = this.id;
         $this = jQuery(this);
