@@ -21,7 +21,10 @@ function display_div_id_scripts_styles() {
 
 add_shortcode( 'display_div_id', 'display_div_id_toggle' );
 function display_div_id_toggle( $args = array() ) {
-    
+
+    if (!is_user_logged_in()){
+        return '';
+    }
 
     if (isset($args['excludeselector'])) {
         $excludeSelector = $args['excludeselector'];
