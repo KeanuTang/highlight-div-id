@@ -12,12 +12,10 @@ define( 'highlight_div_url', plugin_dir_url( __FILE__ ) );
 define( 'highlight_div_path', plugin_dir_path( __FILE__ ) );
 define( 'highlight_div_plugin', plugin_basename( __FILE__ ) );
 
-add_action('wp_enqueue_scripts', 'display_div_id_scripts_styles');
 function display_div_id_scripts_styles() { 
     wp_enqueue_script( 'highlight_div', highlight_div_url . 'highlight-div-id.js', array());
     wp_enqueue_style( 'highlight_div', highlight_div_url . 'highlight-div-id.css', array());
 } 
-
 
 add_shortcode( 'display_div_id', 'display_div_id_toggle' );
 function display_div_id_toggle( $args = array() ) {
@@ -25,6 +23,8 @@ function display_div_id_toggle( $args = array() ) {
     if (!is_user_logged_in()){
         return '';
     }
+
+    add_action('wp_enqueue_scripts', 'display_div_id_scripts_styles');
 
     if (isset($args['excludeselector'])) {
         $excludeSelector = $args['excludeselector'];
