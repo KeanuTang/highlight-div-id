@@ -2,9 +2,6 @@ if (!window.jQuery){
   var script = document.createElement('script');
   script.src = 'https://code.jquery.com/jquery-3.7.0.min.js'; 
   document.head.appendChild(script);
-  var script2 = document.createElement('script');
-  script2.src = 'https://code.jquery.com/jquery-migrate-3.4.1.min.js'; 
-  document.head.appendChild(script2);
 }
 
 var currentDisplayIDMode = false;
